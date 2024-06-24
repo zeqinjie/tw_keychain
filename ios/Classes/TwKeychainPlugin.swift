@@ -7,12 +7,15 @@ public class TwKeychainPlugin: NSObject, FlutterPlugin {
     // 注册实现
     TwKeyChainHostApiSetup.setUp(
       binaryMessenger: registrar.messenger(),
-      api: TWKeyChainHostApiImplementation()
+      api: TWKeyChainHostApiImplementation(with: registrar)
     )
   }
 }
 
 class TWKeyChainHostApiImplementation: TwKeyChainHostApi {
+  /// init registrar
+  init(with registrar: FlutterPluginRegistrar) {}
+  
   /// Fetches a value from the keychain.
   /// [key] is the key to fetch.
   /// [service] is the service to fetch from.
