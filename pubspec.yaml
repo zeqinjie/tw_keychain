@@ -1,7 +1,7 @@
 name: tw_keychain
 description: "A new Flutter plugin project."
 version: 0.0.1
-homepage:
+homepage: https://github.com/zeqinjie/tw_keychain
 
 environment:
   sdk: '>=3.3.1 <4.0.0'
