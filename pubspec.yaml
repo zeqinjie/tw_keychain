@@ -1,5 +1,5 @@
 name: tw_keychain
-description: "A new Flutter plugin project."
+description: "Keychain storage that relies on UICKeyChainStore plug-in."
 version: 0.0.1
 homepage: https://github.com/zeqinjie/tw_keychain
 
