@@ -15,7 +15,6 @@ PlatformException _createConnectionError(String channelName) {
   );
 }
 
-
 class _PigeonCodec extends StandardMessageCodec {
   const _PigeonCodec();
 }
@@ -24,9 +23,11 @@ class TwKeyChainHostApi {
   /// Constructor for [TwKeyChainHostApi].  The [binaryMessenger] named argument is
   /// available for dependency injection.  If it is left null, the default
   /// BinaryMessenger will be used which routes to the host platform.
-  TwKeyChainHostApi({BinaryMessenger? binaryMessenger, String messageChannelSuffix = ''})
+  TwKeyChainHostApi(
+      {BinaryMessenger? binaryMessenger, String messageChannelSuffix = ''})
       : __pigeon_binaryMessenger = binaryMessenger,
-        __pigeon_messageChannelSuffix = messageChannelSuffix.isNotEmpty ? '.$messageChannelSuffix' : '';
+        __pigeon_messageChannelSuffix =
+            messageChannelSuffix.isNotEmpty ? '.$messageChannelSuffix' : '';
   final BinaryMessenger? __pigeon_binaryMessenger;
 
   static const MessageCodec<Object?> pigeonChannelCodec = _PigeonCodec();
@@ -38,15 +39,21 @@ class TwKeyChainHostApi {
   /// [service] is the service to fetch from.
   /// [accessGroup] is the access group to fetch from.
   /// Returns the value stored in the keychain.
-  Future<String> fetchKeyChain({required String key, String? service, String? accessGroup,}) async {
-    final String __pigeon_channelName = 'dev.flutter.pigeon.tw_keychain.TwKeyChainHostApi.fetchKeyChain$__pigeon_messageChannelSuffix';
-    final BasicMessageChannel<Object?> __pigeon_channel = BasicMessageChannel<Object?>(
+  Future<String> fetchKeyChain({
+    required String key,
+    String? service,
+    String? accessGroup,
+  }) async {
+    final String __pigeon_channelName =
+        'dev.flutter.pigeon.tw_keychain.TwKeyChainHostApi.fetchKeyChain$__pigeon_messageChannelSuffix';
+    final BasicMessageChannel<Object?> __pigeon_channel =
+        BasicMessageChannel<Object?>(
       __pigeon_channelName,
       pigeonChannelCodec,
       binaryMessenger: __pigeon_binaryMessenger,
     );
-    final List<Object?>? __pigeon_replyList =
-        await __pigeon_channel.send(<Object?>[key, service, accessGroup]) as List<Object?>?;
+    final List<Object?>? __pigeon_replyList = await __pigeon_channel
+        .send(<Object?>[key, service, accessGroup]) as List<Object?>?;
     if (__pigeon_replyList == null) {
       throw _createConnectionError(__pigeon_channelName);
     } else if (__pigeon_replyList.length > 1) {
@@ -70,15 +77,22 @@ class TwKeyChainHostApi {
   /// [value] is the value to save.
   /// [service] is the service to save to.
   /// [accessGroup] is the access group to save to.
-  Future<void> saveKeyChain({required String key, required String value, String? service, String? accessGroup,}) async {
-    final String __pigeon_channelName = 'dev.flutter.pigeon.tw_keychain.TwKeyChainHostApi.saveKeyChain$__pigeon_messageChannelSuffix';
-    final BasicMessageChannel<Object?> __pigeon_channel = BasicMessageChannel<Object?>(
+  Future<void> saveKeyChain({
+    required String key,
+    required String value,
+    String? service,
+    String? accessGroup,
+  }) async {
+    final String __pigeon_channelName =
+        'dev.flutter.pigeon.tw_keychain.TwKeyChainHostApi.saveKeyChain$__pigeon_messageChannelSuffix';
+    final BasicMessageChannel<Object?> __pigeon_channel =
+        BasicMessageChannel<Object?>(
       __pigeon_channelName,
       pigeonChannelCodec,
       binaryMessenger: __pigeon_binaryMessenger,
     );
-    final List<Object?>? __pigeon_replyList =
-        await __pigeon_channel.send(<Object?>[key, value, service, accessGroup]) as List<Object?>?;
+    final List<Object?>? __pigeon_replyList = await __pigeon_channel
+        .send(<Object?>[key, value, service, accessGroup]) as List<Object?>?;
     if (__pigeon_replyList == null) {
       throw _createConnectionError(__pigeon_channelName);
     } else if (__pigeon_replyList.length > 1) {
