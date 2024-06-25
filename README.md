@@ -1,15 +1,73 @@
 # tw_keychain
 
-A new Flutter plugin project.
+- Keychain storage that relies on UICKeyChainStore plug-in
 
 ## Getting Started
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+```dart
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+import 'package:tw_keychain/tw_keychain.dart';
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final _twKeyChainPlugin = TwKeyChain();
+  String _uuid = '';
+
+  @override
+  void initState() {
+    super.initState();
+    initData();
+  }
+
+  initData() async {
+    _uuid = await _twKeyChainPlugin.fetchKeyChain(
+      key: 'test_uuid',
+      service: 'test_service',
+    );
+    if (_uuid.isEmpty) {
+      _uuid = uuid;
+      await _twKeyChainPlugin.saveKeyChain(
+        key: 'test_uuid',
+        value: _uuid,
+        service: 'test_service',
+      );
+    }
+    setState(() {});
+  }
+
+  /// Random UUID
+  String get uuid {
+    String randomStr = Random().nextInt(10).toString();
+    for (var i = 0; i < 10; i++) {
+      var str = Random().nextInt(10);
+      randomStr = "$randomStr$str";
+    }
+    final timeNumber = DateTime.now().millisecondsSinceEpoch;
+    final uuid = "$randomStr$timeNumber";
+    return uuid;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Plugin example app'),
+        ),
+        body: Center(
+          child: Text('Running on: $_uuid'),
+        ),
+      ),
+    );
+  }
+}
+
+```
+
 
