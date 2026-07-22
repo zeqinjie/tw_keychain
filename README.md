@@ -2,6 +2,13 @@
 
 - Keychain storage that relies on UICKeyChainStore plug-in
 
+## Swift Package Manager
+
+This plugin includes an iOS Swift Package manifest at
+`ios/tw_keychain/Package.swift`. Flutter projects that enable Swift Package
+Manager can consume the iOS implementation through SwiftPM, while projects that
+use CocoaPods continue to use `ios/tw_keychain.podspec`.
+
 ## Getting Started
 
 ```dart
@@ -69,5 +76,4 @@ class _MyAppState extends State<MyApp> {
 }
 
 ```
-
 
