@@ -9,7 +9,8 @@ import 'package:pigeon/pigeon.dart';
     // https://github.com/fluttercommunity/wakelock_plus/issues/18
     errorClassName: "TWKeyChainFlutterError",
   ),
-  swiftOut: 'ios/Classes/TWKeyChainGeneratedApis.g.swift',
+  swiftOut:
+      'ios/tw_keychain/Sources/tw_keychain/TWKeyChainGeneratedApis.g.swift',
 ))
 @HostApi()
 abstract class TwKeyChainHostApi {

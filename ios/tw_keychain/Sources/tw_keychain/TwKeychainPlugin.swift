@@ -15,7 +15,7 @@ public class TwKeychainPlugin: NSObject, FlutterPlugin {
 class TWKeyChainHostApiImplementation: TwKeyChainHostApi {
   /// init registrar
   init(with registrar: FlutterPluginRegistrar) {}
-  
+
   /// Fetches a value from the keychain.
   /// [key] is the key to fetch.
   /// [service] is the service to fetch from.
@@ -25,7 +25,7 @@ class TWKeyChainHostApiImplementation: TwKeyChainHostApi {
     let res = UICKeyChainStore.string(forKey: key, service: service, accessGroup: accessGroup)
     return res ?? ""
   }
-  
+
   /// Saves a value to the keychain.
   /// [key] is the key to save.
   /// [value] is the value to save.
