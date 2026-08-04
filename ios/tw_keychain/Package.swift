@@ -12,12 +12,14 @@ let package = Package(
         .library(name: "tw-keychain", targets: ["tw_keychain"])
     ],
     dependencies: [
+        .package(name: "FlutterFramework", path: "../FlutterFramework"),
         .package(url: "https://github.com/kishikawakatsumi/UICKeyChainStore.git", from: "2.2.1")
     ],
     targets: [
         .target(
             name: "tw_keychain",
             dependencies: [
+                .product(name: "FlutterFramework", package: "FlutterFramework"),
                 .product(name: "UICKeyChainStore", package: "UICKeyChainStore")
             ]
         )
